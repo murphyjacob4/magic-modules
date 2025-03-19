@@ -275,6 +275,7 @@ properties:
     description: "Zone distribution configuration for allocation of instance resources. "
     immutable: true
     default_from_api: true
+    deprecation_message: '`zoneDistributionConfig` is deprecated and will be removed in a future major release. Use `zones` and `primary_zones` instead.'
     properties:
       - name: 'zone'
         type: String
@@ -291,6 +292,18 @@ properties:
         enum_values:
           - 'MULTI_ZONE'
           - 'SINGLE_ZONE'
+  - name: 'zones'
+    type: Array
+    description: "Set of zones to be used for instance nodes."
+    default_from_api: true
+    item_type:
+      type: String
+  - name: 'primary_zones'
+    type: Array
+    description: "Set of zones to be used for instance primary nodes."
+    default_from_api: true
+    item_type:
+      type: String
   - name: 'deletionProtectionEnabled'
     type: Boolean
     description: "Optional. If set to true deletion of the instance will fail. "
